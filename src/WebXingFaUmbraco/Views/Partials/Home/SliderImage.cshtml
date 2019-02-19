@@ -1,0 +1,38 @@
+﻿@inherits UmbracoViewPage
+<!-- Swiper-->
+<section class="section swiper-high-tech bg-white">
+    <div class="swiper-container swiper-slider" data-autoplay="4000" data-clickable="true" data-slide-effect="fade" data-simulate-touch="false">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" data-slide-bg="@Umbraco.Media(Umbraco.Field("sliderImage1").ToString()).Url">
+                <div class="swiper-slide-caption">
+                    <div class="section-lg">
+                        <div class="shell">
+                            @Umbraco.Field("introduceSlider1")
+                            @*<p class="heading-4 heading-divider-modern" data-caption-animate="fadeInUp" data-caption-delay="250" style="font-weight: 400">Individual approach to each patient</p>
+                            <h1 data-caption-animate="fadeInUp" data-caption-delay="100">Medical Service</h1><a class="button button-lg button-white button-effect-ujarak" href="contacts.html" data-caption-animate="fadeInUp" data-caption-delay="450">make an Appointment</a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" data-slide-bg="@Umbraco.Media(Umbraco.Field("sliderImage2").ToString()).Url">
+                <div class="swiper-slide-caption">
+                    <div class="section-lg">
+                        <div class="shell">
+                            @Umbraco.Field("introduceSlider2")
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide" data-slide-bg="@Umbraco.Media(Umbraco.Field("sliderImage3").ToString()).Url">
+                <div class="swiper-slide-caption">
+                    <div class="section-lg">
+                        <div class="shell">
+                            @Umbraco.Field("introduceSlider3")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>
