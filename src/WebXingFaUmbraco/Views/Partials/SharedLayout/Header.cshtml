@@ -1,4 +1,24 @@
-﻿ <!-- Page Header-->
+﻿@using WebXingFaUmbraco.Models
+@using Umbraco.Web.Models;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<List<Navigation.NavigationList>>
+
+@helper RenderSubItems(List<Navigation.NavigationList> listItems, bool isSubNavigation = false)
+{
+    <ul class="@(isSubNavigation == false ? "rd-navbar-nav" : "rd-navbar-dropdown")">
+        @foreach (var navItem in listItems)
+        {
+            <li>
+                <a href="@navItem.LinkInfo.Url" target="@navItem.LinkInfo.Target" title="@navItem.LinkInfo.Title">@navItem.LinkInfo.Text</a>
+                @if (navItem.HasSubNavigation)
+                {
+                    @RenderSubItems(navItem.NavItems, true)
+                }
+            </li>
+
+        }
+    </ul>
+}
+<!-- Page Header-->
 <header class="page-header">
     <!-- RD Navbar-->
     <div class="rd-navbar-wrap">
@@ -51,13 +71,7 @@
                     <div class="rd-navbar-brand"><a class="brand-name" href="~/"><img src="images/brand-default-155x43.png" alt="" width="155" height="43" /></a></div>
                     <div class="rd-navbar-nav-wrap">
                         <!-- RD Navbar Nav-->
-                        <ul class="rd-navbar-nav">
-                            <li><a href="~/">Home</a></li>
-                            <li><a href="~/gioi-thieu">Giới thiệu</a></li>
-                            <li><a href="~/dich-vu">Dịch vụ</a></li>
-                            <li><a href="~/tin-tuc">Tin tức</a></li>
-                            <li><a href="~/lien-he">Liên hệ</a></li>
-                        </ul>
+                        @RenderSubItems(Model)
                     </div>
                 </div>
             </div>

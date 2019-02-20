@@ -290,6 +290,7 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SiteSharedLayoutController.cs" />
+    <Compile Include="Models\Navigation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -332,6 +333,7 @@
     <Content Include="Views\Partials\SharedLayout\Header.cshtml" />
     <Content Include="Views\Partials\SharedLayout\Footer.cshtml" />
     <Content Include="Views\Partials\Home\SliderImage.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

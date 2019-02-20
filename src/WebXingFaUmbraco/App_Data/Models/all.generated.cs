@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "3e8bfab0f7ed67af")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "42797a7a1c27c225")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -221,6 +221,68 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Contacts, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+	}
+
+	/// <summary>Service Details</summary>
+	[PublishedContentModel("serviceDetails")]
+	public partial class ServiceDetails : Services
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "serviceDetails";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ServiceDetails(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ServiceDetails, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// bodyContent: Nội dung bài viết dịch vụ
+		///</summary>
+		[ImplementPropertyType("bodyContent")]
+		public IHtmlString BodyContent
+		{
+			get { return this.GetPropertyValue<IHtmlString>("bodyContent"); }
+		}
+
+		///<summary>
+		/// KeywordsSeo
+		///</summary>
+		[ImplementPropertyType("keywordsSeo")]
+		public string KeywordsSeo
+		{
+			get { return this.GetPropertyValue<string>("keywordsSeo"); }
+		}
+
+		///<summary>
+		/// ShortContent: Thông tin mô tả ngắn
+		///</summary>
+		[ImplementPropertyType("shortContent")]
+		public string ShortContent
+		{
+			get { return this.GetPropertyValue<string>("shortContent"); }
+		}
+
+		///<summary>
+		/// TitleSeo
+		///</summary>
+		[ImplementPropertyType("titleSeo")]
+		public string TitleSeo
+		{
+			get { return this.GetPropertyValue<string>("titleSeo"); }
 		}
 	}
 
