@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "42797a7a1c27c225")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "815ce02a56162dbe")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -283,6 +283,32 @@ namespace Umbraco.Web.PublishedContentModels
 		public string TitleSeo
 		{
 			get { return this.GetPropertyValue<string>("titleSeo"); }
+		}
+	}
+
+	/// <summary>About Details</summary>
+	[PublishedContentModel("aboutDetails")]
+	public partial class AboutDetails : Abouts
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "aboutDetails";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public AboutDetails(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AboutDetails, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 	}
 
